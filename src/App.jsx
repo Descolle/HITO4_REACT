@@ -12,7 +12,8 @@ function App() {
   return (
     <>
       <Home></Home>
-      <Cart></Cart>
+      <CardPizza></CardPizza>
+      {/* <Cart></Cart> */}
       <Footer></Footer>
     </>
   );
