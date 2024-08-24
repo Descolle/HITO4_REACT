@@ -1,28 +1,28 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import Pizzas from "./json/pizzas";
-import { useEffect} from "react";
+//import Pizzas from "./json/pizzas";
+import { useEffect, useState} from "react";
 
 function CardPizza({ catchPizza }) {
-  console.log(Pizzas);
 
-//Crear el await, luego crear un useState con Pizzas set Pizzas para que el sistema lo reconozca y no deba cambiar todas las variantes
-//El setPizzas debe tomar los datos del API
+const [pizzas, setPizzas] = useState([]);
+
+const getPizzas = async () => {
+  const res = await fetch('http://localhost:5000')
+  const data = await res.json()
+
+setPizzas(data)
+}
 useEffect(() => {
-
-
-
-
-
-
+getPizzas();
 },[])
 
 
 
   return (
     <div className="pizzacontainer">
-      {Pizzas.map((pizza) => (
+      {pizzas.map((pizza) => (
         <Card style={{ width: "40vh" }} className="pizza" key={pizza.id}>
           <Card.Img variant="top" src={pizza.img} />
           <Card.Body>
